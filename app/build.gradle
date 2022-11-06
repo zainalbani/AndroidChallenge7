@@ -17,9 +17,30 @@ android {
         targetSdk 32
         versionCode 1
         versionName "1.0"
+        flavorDimensions "default"
+        signingConfig signingConfigs.debug
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    flavorDimensions("default")
+    productFlavors{
+        admin{
+            applicationIdSuffix ".admin"
+            dimension "default"
+        }
+        free{
+            applicationIdSuffix ".free"
+            dimension "default"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
